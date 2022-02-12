@@ -1,0 +1,18 @@
+DROP DATABASE IF EXISTS `Blog`;
+CREATE DATABASE IF NOT EXISTS `Blog` DEFAULT CHARSET utf8mb4;
+USE `Blog`;
+-- 
+-- 新建 用户表
+--
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `name` varchar(100) NOT NULL COMMENT '用户名',
+  `pwd` varchar(100) NOT NULL COMMENT '密码',
+  `permission` int(1) NOT NULL DEFAULT '0' COMMENT '权限:0 visitor、1 user、2 temp 3 admin ',
+  `createTime` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 插入一行数据
+INSERT INTO `user` (`name`,`pwd`,`permission`,`createTime`) VALUES ('admin','123456',4,NOW());
